@@ -28,6 +28,13 @@ let $ = document;
 
 const inputElem = $.querySelector(".search-bar");
 const searchBtn = $.querySelector("#search");
+const weatherEl = $.querySelector(".weather");
+const cityEl = $.querySelector(".city");
+const tempEl = $.querySelector(".temp");
+const descriptionEl = $.querySelector(".description");
+const iconEl = $.querySelector(".icon");
+const humidityEl = $.querySelector(".humidity");
+const windEl = $.querySelector(".wind");
 
 let apiKey = "3244187444f4b03034a273eot82c9c1e";
 
@@ -43,7 +50,15 @@ function fetchData() {
     });
 }
 
-function showData(data) {}
+function showData(data) {
+  weatherEl.classList.remove("loading");
+  cityEl.innerHTML = `${data.city}, ${data.country}`;
+  tempEl.innerHTML = `${Math.round(data.temperature.current)}°C`;
+  descriptionEl.innerHTML = `${data.condition.description}`;
+  iconEl.setAttribute("src", `${data.condition.icon_url}`);
+  humidityEl.innerHTML = `Humidity: ${data.temperature.humidity}%`;
+  windEl.innerHTML = `Wind speed: ${Math.round(data.wind.speed)}km/h`;
+}
 
 inputElem.addEventListener("keypress", (event) => {
   if (event.keyCode === 13) {
