@@ -73,6 +73,8 @@ function showData(data) {
   iconEl.setAttribute("src", `${data.condition.icon_url}`);
   humidityEl.innerHTML = `Humidity: ${data.temperature.humidity}%`;
   windEl.innerHTML = `Wind speed: ${Math.round(data.wind.speed)}km/h`;
+
+  inputElem.value = "";
 }
 
 inputElem.addEventListener("keypress", (event) => {
