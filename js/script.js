@@ -10,6 +10,7 @@ const backgroundImages = [
 ];
 
 // data for weather
+const dateEl = document.querySelector(".date");
 
 let months = [
   "January",
@@ -66,9 +67,11 @@ function fetchData() {
 }
 
 function showData(data) {
+  // console.log(data);
   weatherEl.classList.remove("loading");
   cityEl.innerHTML = `${data.city}, ${data.country}`;
   tempEl.innerHTML = `${Math.round(data.temperature.current)}°C`;
+  dateEl.innerHTML = showDate();
   descriptionEl.innerHTML = `${data.condition.description}`;
   iconEl.setAttribute("src", `${data.condition.icon_url}`);
   humidityEl.innerHTML = `Humidity: ${data.temperature.humidity}%`;
@@ -84,8 +87,13 @@ inputElem.addEventListener("keypress", (event) => {
 });
 searchBtn.addEventListener("click", fetchData);
 
-// changing backgroung image on load
+function showDate() {
+  let now = new Date();
 
-// window.addEventListener("load", () => {
-//   document.body.style.backgroundImage = backgroundImages[randomImgIndex];
-// });
+  let day = days[now.getDay()];
+  let date = now.getDate();
+  let month = months[now.getMonth()];
+  let year = now.getFullYear();
+
+  return `${day} ${date} ${month} ${year}`;
+}
