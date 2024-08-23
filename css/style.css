@@ -15,14 +15,6 @@ body {
   background-position: center;
 }
 
-:root {
-  background-image: url(/images/nature-01.png);
-  background-image: url(/images/nature-02.png);
-  background-image: url(/images/nature-03.png);
-  background-image: url(/images/nature-04.png);
-  background-image: url(/images/nature-05.png);
-}
-
 .card {
   background: #000000d0;
   color: white;
