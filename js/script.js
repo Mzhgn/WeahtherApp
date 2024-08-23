@@ -1,5 +1,16 @@
 ﻿"use strict";
-// let imagesArray=[{id:1,img:}]
+// data for background image
+
+const backgroundImages = [
+  "url(/images/nature-01.png)",
+  "url(/images/nature-02.png)",
+  "url(/images/nature-03.png)",
+  "url(/images/nature-04.png)",
+  "url(/images/nature-05.png)",
+];
+
+// data for weather
+
 let months = [
   "January",
   "February",
@@ -39,6 +50,10 @@ const windEl = $.querySelector(".wind");
 let apiKey = "3244187444f4b03034a273eot82c9c1e";
 
 function fetchData() {
+  // changing the bg
+  const randomImgIndex = Math.floor(Math.random() * backgroundImages.length);
+  document.body.style.backgroundImage = backgroundImages[randomImgIndex];
+  // fetch weather data
   let city = inputElem.value;
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
@@ -66,3 +81,9 @@ inputElem.addEventListener("keypress", (event) => {
   }
 });
 searchBtn.addEventListener("click", fetchData);
+
+// changing backgroung image on load
+
+// window.addEventListener("load", () => {
+//   document.body.style.backgroundImage = backgroundImages[randomImgIndex];
+// });
