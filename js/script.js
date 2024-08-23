@@ -68,15 +68,18 @@ function fetchData() {
 
 function showData(data) {
   // console.log(data);
-  weatherEl.classList.remove("loading");
-  cityEl.innerHTML = `${data.city}, ${data.country}`;
-  tempEl.innerHTML = `${Math.round(data.temperature.current)}°C`;
-  dateEl.innerHTML = showDate();
-  descriptionEl.innerHTML = `${data.condition.description}`;
-  iconEl.setAttribute("src", `${data.condition.icon_url}`);
-  humidityEl.innerHTML = `Humidity: ${data.temperature.humidity}%`;
-  windEl.innerHTML = `Wind speed: ${Math.round(data.wind.speed)}km/h`;
-
+  if (data.city === undefined) {
+    weatherEl.innerHTML = "City is invalid !!";
+  } else {
+    weatherEl.classList.remove("loading");
+    cityEl.innerHTML = `${data.city}, ${data.country}`;
+    tempEl.innerHTML = `${Math.round(data.temperature.current)}°C`;
+    dateEl.innerHTML = showDate();
+    descriptionEl.innerHTML = `${data.condition.description}`;
+    iconEl.setAttribute("src", `${data.condition.icon_url}`);
+    humidityEl.innerHTML = `Humidity: ${data.temperature.humidity}%`;
+    windEl.innerHTML = `Wind speed: ${Math.round(data.wind.speed)}km/h`;
+  }
   inputElem.value = "";
 }
 
